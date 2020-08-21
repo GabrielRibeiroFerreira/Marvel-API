@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		230C05825A377634E22974DC /* Pods_Marvel_APITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B753CD765A65E6AEFC246357 /* Pods_Marvel_APITests.framework */; };
+		2A160A1D24F0255500C37E3D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A160A1C24F0255500C37E3D /* ListTableViewController.swift */; };
+		2A160A1F24F026DD00C37E3D /* TabPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A160A1E24F026DD00C37E3D /* TabPresenter.swift */; };
 		2A5B798924EF51B90080949E /* StoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B798824EF51B90080949E /* StoryList.swift */; };
 		2A5B798B24EF52F70080949E /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B798A24EF52F70080949E /* CharacterList.swift */; };
 		2A808A7324EF42350057BD34 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A808A7224EF42350057BD34 /* Story.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A160A1C24F0255500C37E3D /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		2A160A1E24F026DD00C37E3D /* TabPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPresenter.swift; sourceTree = "<group>"; };
 		2A5B798824EF51B90080949E /* StoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryList.swift; sourceTree = "<group>"; };
 		2A5B798A24EF52F70080949E /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		2A808A7224EF42350057BD34 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 		2ACBB6BA24EEB6F0005B2187 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2A160A1C24F0255500C37E3D /* ListTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB020A624EED36500251EC7 /* ListPresenter.swift */,
+				2A160A1E24F026DD00C37E3D /* TabPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -413,8 +419,10 @@
 				2AB020A924EED54000251EC7 /* DataType.swift in Sources */,
 				2ACBB69C24EEB6C7005B2187 /* ViewController.swift in Sources */,
 				2A808A7324EF42350057BD34 /* Story.swift in Sources */,
+				2A160A1F24F026DD00C37E3D /* TabPresenter.swift in Sources */,
 				2ACBB69824EEB6C7005B2187 /* AppDelegate.swift in Sources */,
 				2AB0209D24EEBD6700251EC7 /* DataContainer.swift in Sources */,
+				2A160A1D24F0255500C37E3D /* ListTableViewController.swift in Sources */,
 				2AB020A324EEBEA600251EC7 /* Character.swift in Sources */,
 				2A5B798B24EF52F70080949E /* CharacterList.swift in Sources */,
 				2AB0209524EEBB2C00251EC7 /* Service.swift in Sources */,

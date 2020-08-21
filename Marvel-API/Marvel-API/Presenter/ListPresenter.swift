@@ -9,10 +9,7 @@
 import Foundation
 
 class ListPresenter {
-//    private weak var delegate : ListTableViewController?
     typealias DataListCallBack = (_ dataList: [Codable]?, _ status: Bool, _ message: String) -> Void
-//    private var dataList : [Codable] = []
-    var imageCallBack : ((_ imageData: NSData) -> Void)?
     var service : ServiceProtocol!
     var type : DataType!
     
@@ -22,9 +19,13 @@ class ListPresenter {
     var pages : Int = 0
     var total : Int = 0
     
-    init(type: DataType, service: ServiceProtocol) {//(delegate: ListTableViewController) {
-//        self.delegate = delegate
+    init(type: DataType, service: ServiceProtocol) {
         self.service = service
+        self.type = type
+    }
+    
+    init(type: DataType) {
+        self.service = Service()
         self.type = type
     }
     
@@ -92,10 +93,10 @@ class ListPresenter {
     func getDataFromService(callBack: @escaping DataListCallBack){
         do {
 //            DebugPrint: use to create a valid link to test api
-            print(url + self.type.string() +
-                "?ts=" + timestamp +
-                "&apikey=" + publicKey +
-                "&hash=" + hash )
+//            print(url + self.type.string() +
+//                "?ts=" + timestamp +
+//                "&apikey=" + publicKey +
+//                "&hash=" + hash )
             let parameters = ["ts": timestamp,
                               "apikey": publicKey ,
                               "hash": hash,
@@ -147,7 +148,7 @@ class ListPresenter {
                             }
                             self.total = dataWrapper.data?.total ?? 0
                             dataList = list as [Codable]
-                            let key = Cache.getKey(type: .comics,
+                            let key = Cache.getKey(type: .stories,
                                                    offset: self.offset,
                                                    limit: self.limit)
                             Cache.storyCache.setObject(dataWrapper, forKey: NSString(string: key))
