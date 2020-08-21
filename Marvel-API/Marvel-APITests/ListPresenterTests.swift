@@ -14,8 +14,8 @@ class ListPresenterTests: XCTestCase {
     var characterListPresenter : ListPresenter = ListPresenter(type: .characters, service: ServiceMock())
     var comicListPresenter : ListPresenter = ListPresenter(type: .comics, service: ServiceMock())
     var storyListPresenter : ListPresenter = ListPresenter(type: .stories, service: ServiceMock())
-
-    func testGetCharacter() {
+    
+    func testDecodeCharacter() {
         var name : String?
         self.characterListPresenter.getData { (list, status, message) in
             guard let listCodable = list else { return }
@@ -26,7 +26,7 @@ class ListPresenterTests: XCTestCase {
         XCTAssertEqual(name, "A-Bomb (HAS)", "getting character error")
     }
     
-    func testGetComic() {
+    func testDecodeComic() {
         var title : String?
         self.comicListPresenter.getData { (list, status, message) in
             guard let listCodable = list else { return }
@@ -37,7 +37,7 @@ class ListPresenterTests: XCTestCase {
         XCTAssertEqual(title, "Marvel Previews (2017)", "getting comic error")
     }
     
-    func testGetStory() {
+    func testDecodeStory() {
         var title : String?
         self.storyListPresenter.getData { (list, status, message) in
             guard let listCodable = list else { return }
