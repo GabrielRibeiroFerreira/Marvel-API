@@ -10,6 +10,7 @@ import Foundation
 
 class ListPresenter {
     typealias DataListCallBack = (_ dataList: [Codable]?, _ status: Bool, _ message: String) -> Void
+    typealias ImageCallBack = (_ imageData: Data?, _ status: Bool, _ message: String) -> Void
     var service : ServiceProtocol!
     var type : DataType!
     
@@ -28,14 +29,6 @@ class ListPresenter {
         self.service = Service()
         self.type = type
     }
-    
-//    func getDataList(forCell index: Int) -> Codable {
-//        return self.dataList[index]
-//    }
-//
-//    func getNumberOfRows() -> Int {
-//        return self.dataList.count
-//    }
     
     //change the actual page and reload the list
     func changePage(isNext: Bool, callBack: @escaping DataListCallBack) {
@@ -164,10 +157,48 @@ class ListPresenter {
                         print(error)
                     }
                 } else {
+                    print(message, self.debugDescription)
                     callBack(nil, false, message)
                 }
             })
         }catch ConnectErrors.receivedFailure{
+            callBack(nil, false, "Lack of internet connection")
+        }catch{
+            callBack(nil, false, error.localizedDescription)
+        }
+    }
+    
+    func getImage(from url: String, callBack: @escaping ImageCallBack) {
+        //try to get the image from cache or try to get from service
+        if let imageData = self.getImageFromCache(key: url) {
+            callBack(imageData, true, "")
+        } else {
+            self.getImageFromService(from: url, callBack: callBack)
+        }
+    }
+    
+    func getImageFromCache(key: String) -> Data? {
+        //data of image
+        var data: Data? = nil
+        
+        //get image data from cache
+        guard let nsData = Cache.imageCache.object(forKey: key as NSString) else { return nil }
+        data = nsData as Data
+        
+        return data
+    }
+    
+    func getImageFromService(from url: String, callBack: @escaping ImageCallBack) {
+        do {
+            try self.service.getData(from: url, parameters: nil) { (data, status, message) in
+                if status {
+                    if let imageData = data {
+                        Cache.imageCache.setObject(imageData as NSData, forKey: NSString(string: url))
+                    }
+                }
+                callBack(data, status, message)
+            }
+        } catch ConnectErrors.receivedFailure{
             callBack(nil, false, "Lack of internet connection")
         }catch{
             callBack(nil, false, error.localizedDescription)

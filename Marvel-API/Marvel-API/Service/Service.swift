@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 
 class Service : ServiceProtocol {
-    
     func getData(from url: String, parameters: Parameters?, callBack: @escaping CallBack) throws {
         guard NetworkReachabilityManager()?.isReachable ?? false else {
             throw ConnectErrors.receivedFailure

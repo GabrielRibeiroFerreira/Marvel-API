@@ -10,6 +10,7 @@
 		230C05825A377634E22974DC /* Pods_Marvel_APITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B753CD765A65E6AEFC246357 /* Pods_Marvel_APITests.framework */; };
 		2A160A1D24F0255500C37E3D /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A160A1C24F0255500C37E3D /* ListTableViewController.swift */; };
 		2A160A1F24F026DD00C37E3D /* TabPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A160A1E24F026DD00C37E3D /* TabPresenter.swift */; };
+		2A503D7E24F6A498005DAC99 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A503D7D24F6A498005DAC99 /* Creator.swift */; };
 		2A5B798924EF51B90080949E /* StoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B798824EF51B90080949E /* StoryList.swift */; };
 		2A5B798B24EF52F70080949E /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B798A24EF52F70080949E /* CharacterList.swift */; };
 		2A808A7324EF42350057BD34 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A808A7224EF42350057BD34 /* Story.swift */; };
@@ -36,6 +37,7 @@
 		2ACBB6A124EEB6CA005B2187 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ACBB6A024EEB6CA005B2187 /* Assets.xcassets */; };
 		2ACBB6A424EEB6CA005B2187 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ACBB6A224EEB6CA005B2187 /* LaunchScreen.storyboard */; };
 		2ACBB6BE24EEB7C1005B2187 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACBB6BD24EEB7C1005B2187 /* ServiceProtocol.swift */; };
+		2AFB85E424F56B5B00AFC217 /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB85E324F56B5B00AFC217 /* ListItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 /* Begin PBXFileReference section */
 		2A160A1C24F0255500C37E3D /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		2A160A1E24F026DD00C37E3D /* TabPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPresenter.swift; sourceTree = "<group>"; };
+		2A503D7D24F6A498005DAC99 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		2A5B798824EF51B90080949E /* StoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryList.swift; sourceTree = "<group>"; };
 		2A5B798A24EF52F70080949E /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		2A808A7224EF42350057BD34 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 		2ACBB6AA24EEB6CA005B2187 /* Marvel-APITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marvel-APITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ACBB6B024EEB6CA005B2187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ACBB6BD24EEB7C1005B2187 /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		2AFB85E324F56B5B00AFC217 /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
 		4DAEFEBFA590768373DD8E02 /* Pods-Marvel-APITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel-APITests.release.xcconfig"; path = "Target Support Files/Pods-Marvel-APITests/Pods-Marvel-APITests.release.xcconfig"; sourceTree = "<group>"; };
 		B753CD765A65E6AEFC246357 /* Pods_Marvel_APITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel_APITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0CFD7EE0A994B961CF16A45 /* Pods_Marvel_API.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel_API.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +129,7 @@
 				2AB0209E24EEBE4000251EC7 /* Comic.swift */,
 				2A808A7224EF42350057BD34 /* Story.swift */,
 				2A808A7424EF43850057BD34 /* Thumbnail.swift */,
+				2A503D7D24F6A498005DAC99 /* Creator.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				2A160A1C24F0255500C37E3D /* ListTableViewController.swift */,
+				2AFB85E324F56B5B00AFC217 /* ListItemTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -417,11 +423,13 @@
 			files = (
 				2AB020A724EED36600251EC7 /* ListPresenter.swift in Sources */,
 				2AB020A924EED54000251EC7 /* DataType.swift in Sources */,
+				2AFB85E424F56B5B00AFC217 /* ListItemTableViewCell.swift in Sources */,
 				2ACBB69C24EEB6C7005B2187 /* ViewController.swift in Sources */,
 				2A808A7324EF42350057BD34 /* Story.swift in Sources */,
 				2A160A1F24F026DD00C37E3D /* TabPresenter.swift in Sources */,
 				2ACBB69824EEB6C7005B2187 /* AppDelegate.swift in Sources */,
 				2AB0209D24EEBD6700251EC7 /* DataContainer.swift in Sources */,
+				2A503D7E24F6A498005DAC99 /* Creator.swift in Sources */,
 				2A160A1D24F0255500C37E3D /* ListTableViewController.swift in Sources */,
 				2AB020A324EEBEA600251EC7 /* Character.swift in Sources */,
 				2A5B798B24EF52F70080949E /* CharacterList.swift in Sources */,

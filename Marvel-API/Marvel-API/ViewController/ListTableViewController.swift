@@ -13,6 +13,8 @@ class ListTableViewController: UITableViewController {
     let type: DataType
     var list: [Codable] = []
     
+    let cellIdenfier =  "cellIdenfier"
+    
     init(presenter: ListPresenter) {
         self.presenter = presenter
         self.type = self.presenter.type
@@ -27,8 +29,12 @@ class ListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupNavBar()
+        self.tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: self.cellIdenfier)
         
+        self.tableView.separatorStyle = .none
+        
+        self.setupNavBar()
+        self.getData()
     }
     
     func setupNavBar() {
@@ -45,7 +51,7 @@ class ListTableViewController: UITableViewController {
                 self.list = list ?? []
                 self.tableView.reloadData()
             } else {
-                print(message)
+                print(message, self.description)
             }
         }
     }
@@ -57,18 +63,58 @@ class ListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+//        return self.list.count
+        return self.list.count
     }
 
-    /*
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdenfier, for: indexPath) as! ListItemTableViewCell
+        
+        let item = self.list[indexPath.row]
+        
+        cell.type = self.type
+        cell.item = item
+        
+        var url: String? = nil
+        switch self.type {
+        case .characters:
+            let character = item as? Character
+            if let path = character?.thumbnail?.path,
+                let ext = character?.thumbnail?.extension {
+                url = path + "." + ext
+            }
+        case .comics:
+            let comic = item as? Comic
+            if let path = comic?.thumbnail?.path,
+                let ext = comic?.thumbnail?.extension {
+                url = path + "." + ext
+            }
+        case .stories:
+            let story = item as? Story
+            if let path = story?.thumbnail?.path,
+                let ext = story?.thumbnail?.extension {
+                url = path + "." + ext
+            }
+        }
+        
+        if let imageURL = url {
+            self.presenter.getImage(from: imageURL) { (data, status, message) in
+                if status {
+                    if let imageData = data {
+                        cell.img = UIImage(data: imageData)
+                    }
+                } else {
+                    print(message)
+                }
+            }
+        }
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
